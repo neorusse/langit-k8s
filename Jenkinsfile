@@ -12,7 +12,7 @@ pipeline {
 
         stage('Docker Security Scan') {
               steps {
-                 aquaMicroscanner imageName: 'ecoden/nginxproxy', notCompleted: 'exit 1', onDisallowed: 'fail'
+                 aquaMicroscanner imageName: 'ecoden/nginxproxy'
               }
          }
     }
