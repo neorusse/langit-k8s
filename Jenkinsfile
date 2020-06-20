@@ -32,9 +32,9 @@ pipeline {
             steps {
                 withDockerRegistry([url: '', credentialsId: 'docker-hub-repository']) {
                     sh 'echo Uploading Flask App & Nginx Image to dockerhub Repository'
-                    sh 'docker tag nginxproxy:v1.0 ecoden/nginxproxy:v1.0'
+                    // sh 'docker tag nginxproxy:v1.0 ecoden/nginxproxy:v1.0'
                     sh 'docker tag langitstars-k8s:v0.95 ecoden/langitstars-k8s:v0.95'
-                    sh 'docker push ecoden/nginxproxy:v1.0'
+                    // sh 'docker push ecoden/nginxproxy:v1.0'
                     sh 'docker push ecoden/langitstars-k8s:v0.95'
                 }
             }
