@@ -13,7 +13,7 @@ pipeline {
         stage( 'Build Flask App and Nginx Reverse Proxy Docker Image and Deploy to Docker Registry' ) {
             steps {
                 sh "docker version"
-                sh 'echo Containerizing Flask App and Nginx Reverse Proxy Server'
+                sh 'echo Containerizing Flask Application and Nginx Reverse Proxy Server'
                 sh 'docker build -t ecoden/langitstars-k8s:v0.95 -f ./app/Dockerfile ./app'
                 sh 'docker build -t ecoden/nginxproxy:v1.0 -f ./nginx/Dockerfile ./nginx'
                 sh 'docker image ls'
