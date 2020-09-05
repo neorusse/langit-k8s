@@ -1,8 +1,8 @@
 # Use the Python3.7.2 image
-FROM python:3.8.1-alpine
+FROM python:3.7.2
 # Create a working directory
 WORKDIR /app
-# Copy source code to working directory
+# Copy source code to working dir
 COPY . app.py /app/
 # Install packages from requirements.txt
 RUN pip install --upgrade pip &&\
