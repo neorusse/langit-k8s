@@ -1,5 +1,5 @@
 # Use the Python3.7.2 image
-FROM python:3.7.2
+FROM python:3.7.3-stretch
 # Create a working directory
 WORKDIR /app
 # Copy source code to working dir
