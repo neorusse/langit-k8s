@@ -10,26 +10,6 @@ pipeline {
             }
         }
 
-        stage('Lint Dockerfile') {
-            steps {
-                script {
-                    docker.image('hadolint/hadolint:latest-debian').inside() {
-                            sh 'hadolint app/Dockerfile | tee -a hadolint_lint.txt'
-                            sh '''
-                                lintErrors=$(stat --printf="%s"  hadolint_lint.txt)
-                                if [ "$lintErrors" -gt "0" ]; then
-                                    echo "Errors have been found, please see below"
-                                    cat hadolint_lint.txt
-                                    exit 1
-                                else
-                                    echo "There are no erros found on Dockerfile!!"
-                                fi
-                            '''
-                    }
-                }
-            }
-        }
-
         stage( 'Build Flask App and Nginx Reverse Proxy Docker Image and Deploy to Docker Registry' ) {
             steps {
                 sh "docker version"
@@ -43,6 +23,15 @@ pipeline {
                 sh 'docker push ecoden/nginxproxy:v1.0'
                 sh 'docker push ecoden/langitstars-k8s:v0.95'
                 }
+            }
+        }
+
+        stage('Deploying to AWS EKS') {
+            steps {
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS-EKS', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                    sh "aws eks --region us-east-2 update-kubeconfig --name longitstars-k8s"
+                    sh 'kubectl apply -f k8s-manifest.yml'
+                }     
             }
         }
     }
