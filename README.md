@@ -17,19 +17,15 @@ Udacity Cloud DevOps NanoDegree Program Capstone Project done to demostrate know
 
 Flask
 
-pytest
-
-PyLint
-
 Docker
-
-Kubernetes
 
 Jenkins
 
-AWS - EKS, ECR, CloudFormation
+AWS EC2
 
-Ansible
+AWS EKS
+
+Terraform
 
 ### Building from Source
 
@@ -42,6 +38,7 @@ You need Python 3 and a bash-like shell.
 ```bash
 $ python3 -m venv ~/.langitstars
 ```
+
 - Activate the Python virtualenv
 
 ```bash
@@ -62,6 +59,26 @@ $ export FLASK_ENV=development; python3 -m flask run
 2. Run in Docker: `./run_docker.sh`
 3. Run in Kubernetes: `./run_kubernetes.sh`
 
+### Provision AWS EC2 AMI Linux Server using Terraform
+
+- Download Terraform AWS Provider Plugin, run
+
+```bash
+$ terraform init
+```
+
+- To see the list of AWS resources Terraform will create, run
+
+```bash
+$ terraform plan -out ec2.tfplan
+```
+
+- To create the AWS EC2 AMI Linux Server, run
+
+```bash
+$ terraform apply "ec2.tfplan"
+```
+
 ### Kubernetes Steps
 
 - Setup and Configure Docker locally
@@ -74,6 +91,28 @@ $ export FLASK_ENV=development; python3 -m flask run
 > Application listens on port 8000
 
 ---
+
+### How to Deploy the App to AWS EKS K8s Cluster:
+
+- Create an AWS IAM User with Administrator access privillage
+
+- Initialize Production Build by running:
+
+```bash
+$ npm run build
+```
+
+- Configure Jenkins using the AWS IAM User Credentials
+
+- Configure Jenkins for Docker Build and Deploy to Registry
+
+### Create the AWS EKS K8s Cluster by running:
+
+```bash
+$ eksctl create cluster -f k8s-cluster-init.yml --write-kubeconfig --set-kubeconfig-context
+```
+
+- Deploy to K8s cluster by running Jenkins
 
 ### Testing
 
