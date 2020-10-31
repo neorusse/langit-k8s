@@ -129,3 +129,10 @@ dmypy.json
 .pyre/
 
 .vscode
+
+# Terraform
+aws-ec2-terraform/terraform.tfvars
+aws-ec2-terraform/ec2.tfplan
+aws-ec2-terraform/terraform.tfstate
+aws-ec2-terraform/terraform.tfstate.backup
+
