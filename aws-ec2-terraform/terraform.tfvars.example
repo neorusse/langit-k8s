@@ -1,0 +1,7 @@
+aws_access_key = "xxxxxxxxxxxxxx"
+
+aws_secret_key = "xxxxxxxxxxxxxxxxx"
+
+key_name = "xxxxxxxxxxxxx"
+
+private_key_path = "xxxxxxxxxx.pem"
