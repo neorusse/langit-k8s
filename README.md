@@ -7,13 +7,15 @@
 Udacity Cloud DevOps NanoDegree Program Capstone Project done to demostrate knowledge of Building Cloud Native Application, Kubernetes, Docker, CICD, and Infrastructure as Code. Project Task Include:
 
 - Working in AWS
+- Using Terraform to provision Resources - AWS VPC, EC2 Linux Machine
 - Using Jenkins to implement Continuous Integration and Continuous Deployment
-- Building pipelines
-- Working with Ansible and CloudFormation to deploy Kubernetes clusters (AWS EKS)
-- Building Kubernetes clusters (AWS EKS)
+- Building Jenkins pipelines
 - Building Docker containers in pipelines
+- Creating Kubernetes clusters (AWS EKS)
 
 ### Technology Used
+
+Python
 
 Flask
 
@@ -53,7 +55,13 @@ $ source ~/.langitstars/bin/activate
 $ export FLASK_ENV=development; python3 -m flask run
 ```
 
-### Docker And Kubernetes Script to build and run the App
+### Verify the application is running
+
+> Application listens on port 8000
+
+---
+
+### Docker And Kubernetes Script to build and run the App locally
 
 1. Standalone: `python app.py`
 2. Run in Docker: `./run_docker.sh`
@@ -78,19 +86,6 @@ $ terraform plan -out ec2.tfplan
 ```bash
 $ terraform apply "ec2.tfplan"
 ```
-
-### Kubernetes Steps
-
-- Setup and Configure Docker locally
-- Setup and Configure Kubernetes locally
-- Create Flask app in Container
-- Run via kubectl
-
-### Verify the application is running
-
-> Application listens on port 8000
-
----
 
 ### How to Deploy the App to AWS EKS K8s Cluster:
 
@@ -124,7 +119,7 @@ This project uses [pytest](https://docs.pytest.org/en/latest/)
 
 ### Credits
 
-[Intermediate Python - Nina Zakharenko](https://frontendmasters.com/courses/intermediate-python/)
+Python Application credit goes to [Intermediate Python - Nina Zakharenko](https://frontendmasters.com/courses/intermediate-python/)
 
 ### Author
 
